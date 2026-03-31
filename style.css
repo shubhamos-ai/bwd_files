@@ -20,9 +20,23 @@ body {
     font-family: Arial, sans-serif;
     color: var(--text-main);
     line-height: 1.6;
-    background: var(--background) url('/bg.png?v=2') no-repeat center center fixed;
-    background-size: cover;
     min-height: 100vh;
+    position: relative;
+    background-color: transparent;
+    z-index: 1;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: url('/bg.png?v=2') no-repeat center center;
+    background-size: cover;
+    filter: blur(3px);
+    z-index: -1;
 }
 
 .navbar {
@@ -49,7 +63,6 @@ body {
     padding: 80px 20px;
     text-align: center;
     background-color: transparent;
-    border-bottom: 2px solid var(--secondary);
 }
 
 .main-title {
