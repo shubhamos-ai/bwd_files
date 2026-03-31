@@ -68,6 +68,7 @@ function handleFormSubmit(event) {
         if (userSure == true) {
             // Save data
             localStorage.setItem('userName', name);
+            localStorage.setItem('birthDate', birthdate);
             localStorage.setItem('chosenType', type);
             
             // Simple logic for calculation
@@ -98,7 +99,11 @@ function displayZodiacResult() {
         
         if (zodiacSign) {
             if (type == "Death Calculator") {
-                resultValue.innerHTML = "You will live for 100+ years! ⏳";
+                const birthDateValue = localStorage.getItem('birthDate');
+                const birthDate = new Date(birthDateValue);
+                const birthYear = birthDate.getFullYear();
+                const deathYear = birthYear + 85;
+                resultValue.innerHTML = "You will live until the year " + deathYear + "! ⏳ (Age 85)";
             } else if (type == "Vedic Planets") {
                 resultValue.innerHTML = "Jupiter is in your favor! 🪐";
             } else {
