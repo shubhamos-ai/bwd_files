@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,14 +20,14 @@
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">⏰ Calculate Death Date</h1>
-            <p class="fadeInUp">Ancient wisdom meets modern calculations - Explore your life span and destiny</p>
+            <h1>⏰ Calculate Death Date</h1>
+            <p>Ancient wisdom meets modern calculations - Explore your life span and destiny</p>
         </div>
 
         <!-- Calculator Form -->
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-12">
-                <div class="form-container fade-in">
+                <div class="form-container">
                     <h2 class="text-center mb-4">🔮 Life Span Calculator</h2>
                     
                     <form id="deathCalculatorForm">
@@ -167,7 +164,7 @@
         <!-- Disclaimer -->
         <div class="row mt-4">
             <div class="col-12">
-                <div class="alert alert-warning fade-in">
+                <div class="alert alert-warning">
                     <h5>⚠️ Important Disclaimer</h5>
                     <p>This calculator is for entertainment purposes only. Life span predictions are based on statistical averages and astrological calculations, not medical science. Please consult healthcare professionals for actual health concerns.</p>
                     <p><strong>Remember:</strong> Your actual life span depends on many factors including genetics, healthcare, lifestyle, and environment. Live each day to the fullest!</p>
@@ -190,7 +187,7 @@
             e.preventDefault();
             
             // Show loading spinner
-            document.getElementById('loadingSpinner').style.display = 'flex';
+            
             
             // Get form values
             const birthDate = document.getElementById('birthDate').value;
@@ -247,9 +244,9 @@
             
             // Hide loading and show results
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
                 document.getElementById('resultsSection').style.display = 'block';
-                document.getElementById('resultsSection').classList.add('fade-in');
+                document.getElementById('resultsSection');
                 
                 // Display results
                 document.getElementById('lifeSpan').textContent = calculatedAge + ' years';
@@ -269,7 +266,7 @@
         // Hide loading spinner when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 500);
         });
     </script>

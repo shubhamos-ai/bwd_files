@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,14 +20,14 @@
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">🧠 Simple Astrology Engine</h1>
-            <p class="fadeInUp">Enter your birth details for instant cosmic insights</p>
+            <h1>🧠 Simple Astrology Engine</h1>
+            <p>Enter your birth details for instant cosmic insights</p>
         </div>
         
         <!-- Simple Form -->
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-12">
-                <div class="form-container fade-in">
+                <div class="form-container">
                     <h2 class="text-center mb-4">🎯 Enter Your Birth Details</h2>
                     
                     <form id="simpleAstrologyForm">
@@ -144,7 +141,7 @@
             e.preventDefault();
             
             // Show loading
-            document.getElementById('loadingSpinner').style.display = 'flex';
+            
             
             // Get input values
             const birthDate = document.getElementById('birthDate').value;
@@ -152,7 +149,7 @@
             
             if (!birthDate) {
                 alert('Please enter your birth date!');
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
                 return;
             }
             
@@ -160,7 +157,7 @@
             setTimeout(() => {
                 const results = calculateSimpleAstrology(birthDate, birthTime);
                 displayResults(results);
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 1000);
         });
 
@@ -254,7 +251,7 @@
         function displayResults(results) {
             // Show results section
             document.getElementById('resultsSection').style.display = 'block';
-            document.getElementById('resultsSection').classList.add('fade-in');
+            document.getElementById('resultsSection');
             
             // Display Sun Sign
             document.getElementById('sunSign').textContent = results.sunSign;
@@ -287,7 +284,7 @@
         // Hide loading spinner when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 500);
         });
     </script>

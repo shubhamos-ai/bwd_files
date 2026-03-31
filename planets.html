@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,16 +20,16 @@
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">🪐 Planets (Grahas in Vedic Astrology)</h1>
-            <p class="fadeInUp">Discover the cosmic influences shaping your destiny</p>
+            <h1>🪐 Planets (Grahas in Vedic Astrology)</h1>
+            <p>Discover the cosmic influences shaping your destiny</p>
         </div>
 
         <!-- Planets Grid -->
         <div class="row g-4">
             <!-- Sun -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in">
-                    <div class="planet-icon spinning">☀️</div>
+                <div class="planet-card">
+                    <div class="planet-icon">☀️</div>
                     <h3>Sun (Surya)</h3>
                     <div class="planet-description">
                         <strong>Ego & Identity</strong><br>
@@ -43,7 +40,7 @@
 
             <!-- Moon -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 0.2s;">
+                <div class="planet-card">
                     <div class="planet-icon">🌙</div>
                     <h3>Moon (Chandra)</h3>
                     <div class="planet-description">
@@ -55,7 +52,7 @@
 
             <!-- Mercury -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 0.4s;">
+                <div class="planet-card">
                     <div class="planet-icon">☿</div>
                     <h3>Mercury (Budha)</h3>
                     <div class="planet-description">
@@ -67,7 +64,7 @@
 
             <!-- Venus -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 0.6s;">
+                <div class="planet-card">
                     <div class="planet-icon">♀</div>
                     <h3>Venus (Shukra)</h3>
                     <div class="planet-description">
@@ -79,7 +76,7 @@
 
             <!-- Mars -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 0.8s;">
+                <div class="planet-card">
                     <div class="planet-icon">♂</div>
                     <h3>Mars (Mangal)</h3>
                     <div class="planet-description">
@@ -91,7 +88,7 @@
 
             <!-- Jupiter -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 1s;">
+                <div class="planet-card">
                     <div class="planet-icon">♃</div>
                     <h3>Jupiter (Guru)</h3>
                     <div class="planet-description">
@@ -103,7 +100,7 @@
 
             <!-- Saturn -->
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="planet-card fade-in" style="animation-delay: 1.2s;">
+                <div class="planet-card">
                     <div class="planet-icon">♄</div>
                     <h3>Saturn (Shani)</h3>
                     <div class="planet-description">
@@ -121,7 +118,7 @@
                     <div class="row">
                         <!-- Rahu -->
                         <div class="col-md-6 col-12 mb-3">
-                            <div class="planet-card fade-in" style="animation-delay: 1.4s; background: linear-gradient(145deg, #2c3e50, #1a1a2e);">
+                            <div class="planet-card">
                                 <div class="planet-icon">🌑</div>
                                 <h3>Rahu (North Node)</h3>
                                 <div class="planet-description">
@@ -133,7 +130,7 @@
 
                         <!-- Ketu -->
                         <div class="col-md-6 col-12 mb-3">
-                            <div class="planet-card fade-in" style="animation-delay: 1.6s; background: linear-gradient(145deg, #495057, #212529);">
+                            <div class="planet-card">
                                 <div class="planet-icon">🌘</div>
                                 <h3>Ketu (South Node)</h3>
                                 <div class="planet-description">
@@ -170,16 +167,14 @@
     <script src="script.js"></script>
     <script>
         function navigateToPage(page) {
-            document.getElementById('loadingSpinner').style.display = 'flex';
-            setTimeout(() => {
-                window.location.href = page;
-            }, 1000);
+            
+            window.location.href = page;
         }
         
         // Hide loading spinner when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 500);
         });
     </script>

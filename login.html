@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,12 +20,12 @@
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">🔮 Welcome Back, Cosmic Explorer!</h1>
-            <p class="fadeInUp">Choose your path to celestial wisdom</p>
+            <h1>🔮 Welcome Back, Cosmic Explorer!</h1>
+            <p>Choose your path to celestial wisdom</p>
         </div>
         
         <!-- Login Container -->
-        <div class="login-container fade-in">
+        <div class="login-container">
             <h2 class="login-title">🌟 Enter Your Cosmic Portal</h2>
             
             <!-- Welcome Message -->
@@ -184,18 +181,16 @@
         
         function navigateToPage(page) {
             // Show loading spinner
-            document.getElementById('loadingSpinner').style.display = 'flex';
+            
             
             // Simulate loading delay
-            setTimeout(() => {
-                window.location.href = page;
-            }, 800);
+            window.location.href = page;
         }
         
         // Hide loading spinner when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 500);
         });
     </script>

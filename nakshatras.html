@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Spinner -->
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
+    
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,15 +20,15 @@
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">🔮 Nakshatras (Lunar Constellations)</h1>
-            <p class="fadeInUp">27 divisions of the sky based on the Moon - More detailed than zodiac signs</p>
+            <h1>🔮 Nakshatras (Lunar Constellations)</h1>
+            <p>27 divisions of the sky based on the Moon - More detailed than zodiac signs</p>
         </div>
 
         <!-- Nakshatras Grid -->
         <div class="row g-3">
             <!-- Ashwini -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.1s;">
+                <div class="nakshatra-card">
                     <h3>🐑 Ashwini</h3>
                     <p><strong>Stars:</strong> β Arietis - 35°00' to 35°20'</p>
                     <p><strong>Ruler:</strong> Ketu (South Node)</p>
@@ -42,7 +39,7 @@
 
             <!-- Bharani -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.2s;">
+                <div class="nakshatra-card">
                     <h3>🐑 Bharani</h3>
                     <p><strong>Stars:</strong> 35°20' to 36°40' Arietis</p>
                     <p><strong>Ruler:</strong> Venus</p>
@@ -53,7 +50,7 @@
 
             <!-- Krittika -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.3s;">
+                <div class="nakshatra-card">
                     <h3>🔪 Krittika</h3>
                     <p><strong>Stars:</strong> 36°40' to 40°00' Taurus</p>
                     <p><strong>Ruler:</strong> Sun</p>
@@ -64,7 +61,7 @@
 
             <!-- Rohini -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.4s;">
+                <div class="nakshatra-card">
                     <h3>🐄 Rohini</h3>
                     <p><strong>Stars:</strong> 40°00' to 43°20' Taurus</p>
                     <p><strong>Ruler:</strong> Moon</p>
@@ -75,7 +72,7 @@
 
             <!-- Mrigashirsha -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.5s;">
+                <div class="nakshatra-card">
                     <h3>🦌 Mrigashirsha</h3>
                     <p><strong>Stars:</strong> 43°20' to 46°40' Taurus</p>
                     <p><strong>Ruler:</strong> Mars</p>
@@ -86,7 +83,7 @@
 
             <!-- Ardra -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.6s;">
+                <div class="nakshatra-card">
                     <h3>⭐ Ardra</h3>
                     <p><strong>Stars:</strong> 46°40' to 50°00' Gemini</p>
                     <p><strong>Ruler:</strong> Rahu (North Node)</p>
@@ -97,7 +94,7 @@
 
             <!-- Punarvasu -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.7s;">
+                <div class="nakshatra-card">
                     <h3>🏹 Punarvasu</h3>
                     <p><strong>Stars:</strong> 50°00' to 53°20' Gemini</p>
                     <p><strong>Ruler:</strong> Jupiter</p>
@@ -108,7 +105,7 @@
 
             <!-- Pushya -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.8s;">
+                <div class="nakshatra-card">
                     <h3>💫 Pushya</h3>
                     <p><strong>Stars:</strong> 53°20' to 56°40' Cancer</p>
                     <p><strong>Ruler:</strong> Saturn</p>
@@ -119,7 +116,7 @@
 
             <!-- Ashlesha -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 0.9s;">
+                <div class="nakshatra-card">
                     <h3>🌙 Ashlesha</h3>
                     <p><strong>Stars:</strong> 56°40' to 60°00' Cancer</p>
                     <p><strong>Ruler:</strong> Mercury</p>
@@ -130,7 +127,7 @@
 
             <!-- Magha -->
             <div class="col-lg-4 col-md-6 col-12 mb-3">
-                <div class="nakshatra-card fade-in" style="animation-delay: 1s;">
+                <div class="nakshatra-card">
                     <h3>👑 Magha</h3>
                     <p><strong>Stars:</strong> 60°00' to 66°40' Leo</p>
                     <p><strong>Ruler:</strong> Ketu (South Node)</p>
@@ -174,16 +171,14 @@
     <script src="script.js"></script>
     <script>
         function navigateToPage(page) {
-            document.getElementById('loadingSpinner').style.display = 'flex';
-            setTimeout(() => {
-                window.location.href = page;
-            }, 1000);
+            
+            window.location.href = page;
         }
         
         // Hide loading spinner when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
+                
             }, 500);
         });
     </script>
