@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Astrology Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="zodiac.html">Zodiac Signs</a>
+                <a href="planets.html">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="login.html" class="active">Login</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="fadeInUp">🔮 Welcome to Your Cosmic Portal</h1>
+            <p class="fadeInUp">Choose your path to celestial wisdom</p>
+        </div>
+        
+        <!-- Login Container -->
+        <div class="login-container fade-in">
+            <h2 class="login-title">🌟 Choose Your Journey</h2>
+            
+            <div class="options-grid">
+                <!-- Zodiac Sign Calculator -->
+                <div class="option-card pulse-hover" onclick="navigateToPage('form.html')">
+                    <div class="planet-icon">🔮</div>
+                    <h3>Calculate Zodiac Sign</h3>
+                    <p>Discover your zodiac sign based on your birth date</p>
+                    <div class="feature-list">
+                        <small>✓ Accurate calculations</small><br>
+                        <small>✓ Personality insights</small><br>
+                        <small>✓ Free to use</small>
+                    </div>
+                </div>
+                
+                <!-- Death Date Calculator -->
+                <div class="option-card pulse-hover" onclick="navigateToPage('death-calculator.html')">
+                    <div class="planet-icon">⏰</div>
+                    <h3>Calculate Death Date</h3>
+                    <p>Explore life predictions and destiny calculations</p>
+                    <div class="feature-list">
+                        <small>✓ Life span predictions</small><br>
+                        <small>✓ Destiny analysis</small><br>
+                        <small>✓ Ancient wisdom</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="text-muted">Already have an account? <a href="#" onclick="showQuickLogin()">Quick Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fun Astrology Analyzer. Your cosmic journey begins here! 🌟</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="planets.html">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function navigateToPage(page) {
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                window.location.href = page;
+            }, 1000);
+        }
+        
+        function showQuickLogin() {
+            // Simple quick login simulation
+            const email = prompt('Enter your email for quick login:');
+            if (email) {
+                alert(`Welcome back! ${email}`);
+                // In real app, this would authenticate the user
+            }
+        }
+        
+        // Hide loading spinner when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planets - Vedic Astrology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="zodiac.html">Zodiac Signs</a>
+                <a href="planets.html" class="active">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="login.html">Login</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="fadeInUp">🪐 Planets (Grahas in Vedic Astrology)</h1>
+            <p class="fadeInUp">Discover the cosmic influences shaping your destiny</p>
+        </div>
+
+        <!-- Planets Grid -->
+        <div class="row g-4">
+            <!-- Sun -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in">
+                    <div class="planet-icon spinning">☀️</div>
+                    <h3>Sun (Surya)</h3>
+                    <div class="planet-description">
+                        <strong>Ego & Identity</strong><br>
+                        Represents your core personality, soul purpose, and how you shine in the world. Governs leadership and vitality.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moon -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="planet-icon">🌙</div>
+                    <h3>Moon (Chandra)</h3>
+                    <div class="planet-description">
+                        <strong>Emotions & Mind</strong><br>
+                        Rules your feelings, intuition, and inner emotional world. Governs motherhood and nurturing qualities.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mercury -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="planet-icon">☿</div>
+                    <h3>Mercury (Budha)</h3>
+                    <div class="planet-description">
+                        <strong>Communication & Intelligence</strong><br>
+                        Controls your thinking process, speech, and learning abilities. Governs business and intellectual pursuits.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venus -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 0.6s;">
+                    <div class="planet-icon">♀</div>
+                    <h3>Venus (Shukra)</h3>
+                    <div class="planet-description">
+                        <strong>Love & Beauty</strong><br>
+                        Rules your relationships, artistic expression, and sense of harmony. Governs romance and creative talents.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mars -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 0.8s;">
+                    <div class="planet-icon">♂</div>
+                    <h3>Mars (Mangal)</h3>
+                    <div class="planet-description">
+                        <strong>Energy & Aggression</strong><br>
+                        Controls your drive, courage, and physical strength. Governs competition and martial abilities.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jupiter -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 1s;">
+                    <div class="planet-icon">♃</div>
+                    <h3>Jupiter (Guru)</h3>
+                    <div class="planet-description">
+                        <strong>Luck & Wisdom</strong><br>
+                        Rules your fortune, higher knowledge, and spiritual growth. Governs teaching and expansion.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saturn -->
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="planet-card fade-in" style="animation-delay: 1.2s;">
+                    <div class="planet-icon">♄</div>
+                    <h3>Saturn (Shani)</h3>
+                    <div class="planet-description">
+                        <strong>Discipline & Karma</strong><br>
+                        Controls your life lessons, responsibilities, and long-term achievements. Governs hard work and perseverance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shadow Planets -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h2 class="text-center mb-4">🌑 Shadow Points (Very Important in Indian Astrology)</h2>
+                    
+                    <div class="row">
+                        <!-- Rahu -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="planet-card fade-in" style="animation-delay: 1.4s; background: linear-gradient(145deg, #2c3e50, #1a1a2e);">
+                                <div class="planet-icon">🌑</div>
+                                <h3>Rahu (North Node)</h3>
+                                <div class="planet-description">
+                                    <strong>Material Desires & Ambition</strong><br>
+                                    Represents your worldly attachments, karmic challenges, and unconventional thinking. Governs foreign influences.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ketu -->
+                        <div class="col-md-6 col-12 mb-3">
+                            <div class="planet-card fade-in" style="animation-delay: 1.6s; background: linear-gradient(145deg, #495057, #212529);">
+                                <div class="planet-icon">🌘</div>
+                                <h3>Ketu (South Node)</h3>
+                                <div class="planet-description">
+                                    <strong>Spiritual Liberation & Past Life</strong><br>
+                                    Represents your detachment, psychic abilities, and spiritual evolution. Governs enlightenment and moksha.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Section -->
+        <div class="text-center mt-5">
+            <div class="death-calculator p-4">
+                <h3>🔮 Discover Your Planetary Influence</h3>
+                <p>Get personalized analysis based on your birth chart</p>
+                <button class="btn btn-primary btn-large" onclick="navigateToPage('form.html')">
+                    Calculate Your Birth Chart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fun Astrology Analyzer. The planets guide your journey! 🪐</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="planets.html">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function navigateToPage(page) {
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            setTimeout(() => {
+                window.location.href = page;
+            }, 1000);
+        }
+        
+        // Hide loading spinner when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

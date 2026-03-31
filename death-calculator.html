@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Date Calculator - Vedic Astrology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="zodiac.html">Zodiac Signs</a>
+                <a href="planets.html">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="death-calculator.html" class="active">Death Calculator</a>
+                <a href="login.html">Login</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="fadeInUp">⏰ Calculate Death Date</h1>
+            <p class="fadeInUp">Ancient wisdom meets modern calculations - Explore your life span and destiny</p>
+        </div>
+
+        <!-- Calculator Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="form-container fade-in">
+                    <h2 class="text-center mb-4">🔮 Life Span Calculator</h2>
+                    
+                    <form id="deathCalculatorForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="birthDate" class="form-label">Birth Date:</label>
+                                <input type="date" id="birthDate" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Gender:</label>
+                                <select id="gender" class="form-select" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="lifestyle" class="form-label">Lifestyle:</label>
+                                <select id="lifestyle" class="form-select" required>
+                                    <option value="">Select Lifestyle</option>
+                                    <option value="healthy">Healthy & Active</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="sedentary">Sedentary</option>
+                                    <option value="stressful">High Stress</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="location" class="form-label">Living Location:</label>
+                                <select id="location" class="form-select" required>
+                                    <option value="">Select Location</option>
+                                    <option value="urban">Urban City</option>
+                                    <option value="rural">Rural Area</option>
+                                    <option value="coastal">Coastal Region</option>
+                                    <option value="mountain">Mountain Region</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="diet" class="form-label">Diet Type:</label>
+                                <select id="diet" class="form-select" required>
+                                    <option value="">Select Diet</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="non-vegetarian">Non-Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="mixed">Mixed Diet</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="exercise" class="form-label">Exercise Frequency:</label>
+                                <select id="exercise" class="form-select" required>
+                                    <option value="">Select Exercise</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">3-4 times per week</option>
+                                    <option value="monthly">1-2 times per month</option>
+                                    <option value="rare">Rarely</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                ⏰ Calculate Life Span
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="calculator-result" id="resultsSection" style="display: none;">
+                    <h3 class="text-center mb-3">🌟 Your Life Prediction</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="text-center">
+                                <h5>Expected Life Span</h5>
+                                <div class="display-4 text-primary" id="lifeSpan">--</div>
+                                <small class="text-muted">Based on your inputs</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="text-center">
+                                <h5>Remaining Years</h5>
+                                <div class="display-4 text-success" id="remainingYears">--</div>
+                                <small class="text-muted">Time to make the most of it!</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="text-center">
+                                <h5>Lucky Number</h5>
+                                <div class="display-4 text-warning" id="luckyNumber">--</div>
+                                <small class="text-muted">Your destiny number</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="text-center">
+                                <h5>Death Year</h5>
+                                <div class="display-4 text-danger" id="deathYear">--</div>
+                                <small class="text-muted">Predicted transition year</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h5>🌙 Vedic Wisdom</h5>
+                        <p id="vedicInsight" class="text-center">
+                            Complete the form to receive ancient astrological insights about your life journey and destiny.
+                        </p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary" onclick="resetCalculator()">
+                            🔄 Calculate Again
+                        </button>
+                        <a href="form.html" class="btn btn-primary ms-2">
+                            🔮 Birth Chart Analysis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-warning fade-in">
+                    <h5>⚠️ Important Disclaimer</h5>
+                    <p>This calculator is for entertainment purposes only. Life span predictions are based on statistical averages and astrological calculations, not medical science. Please consult healthcare professionals for actual health concerns.</p>
+                    <p><strong>Remember:</strong> Your actual life span depends on many factors including genetics, healthcare, lifestyle, and environment. Live each day to the fullest!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fun Astrology Analyzer. Cherish every moment! ⏰</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="planets.html">Planets</a>
+                <a href="nakshatras.html">Nakshatras</a>
+                <a href="form.html">Start Analysis</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('deathCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            
+            // Get form values
+            const birthDate = document.getElementById('birthDate').value;
+            const gender = document.getElementById('gender').value;
+            const lifestyle = document.getElementById('lifestyle').value;
+            const location = document.getElementById('location').value;
+            const diet = document.getElementById('diet').value;
+            const exercise = document.getElementById('exercise').value;
+            
+            // Calculate base life expectancy
+            let baseAge = 80; // Average life expectancy
+            let ageModifier = 0;
+            
+            // Apply modifiers based on inputs
+            if (lifestyle === 'healthy') ageModifier += 10;
+            else if (lifestyle === 'moderate') ageModifier += 0;
+            else if (lifestyle === 'sedentary') ageModifier -= 5;
+            else if (lifestyle === 'stressful') ageModifier -= 10;
+            
+            if (location === 'rural') ageModifier += 3;
+            else if (location === 'coastal') ageModifier += 2;
+            
+            if (diet === 'vegetarian') ageModifier += 2;
+            else if (diet === 'vegan') ageModifier += 3;
+            
+            if (exercise === 'daily') ageModifier += 8;
+            else if (exercise === 'weekly') ageModifier += 5;
+            else if (exercise === 'monthly') ageModifier += 0;
+            else if (exercise === 'rare') ageModifier -= 5;
+            
+            // Gender modifier
+            if (gender === 'female') ageModifier += 3;
+            
+            const calculatedAge = baseAge + ageModifier;
+            const birthYear = new Date(birthDate).getFullYear();
+            const deathYear = birthYear + calculatedAge;
+            const remainingYears = calculatedAge - (new Date().getFullYear() - birthYear);
+            
+            // Calculate lucky number (sum of birth date digits)
+            const birthDateNum = new Date(birthDate).getDate();
+            const birthMonthNum = new Date(birthDate).getMonth() + 1;
+            const birthYearNum = new Date(birthDate).getFullYear();
+            const luckyNumber = (birthDateNum + birthMonthNum + birthYearNum).toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0) % 9 || 9;
+            
+            // Generate Vedic insight
+            const insights = [
+                "Your life path is guided by celestial wisdom and karmic patterns.",
+                "The stars align to bring you wisdom and spiritual growth.",
+                "Your journey reflects the cosmic dance of destiny and free will.",
+                "Ancient vedic texts reveal your unique purpose in this lifetime.",
+                "Your birth chart shows the promise of enlightenment and self-realization."
+            ];
+            const randomInsight = insights[Math.floor(Math.random() * insights.length)];
+            
+            // Hide loading and show results
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('resultsSection').style.display = 'block';
+                document.getElementById('resultsSection').classList.add('fade-in');
+                
+                // Display results
+                document.getElementById('lifeSpan').textContent = calculatedAge + ' years';
+                document.getElementById('remainingYears').textContent = remainingYears + ' years';
+                document.getElementById('deathYear').textContent = deathYear;
+                document.getElementById('luckyNumber').textContent = luckyNumber;
+                document.getElementById('vedicInsight').textContent = randomInsight;
+            }, 1500);
+        });
+        
+        function resetCalculator() {
+            document.getElementById('deathCalculatorForm').reset();
+            document.getElementById('resultsSection').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Hide loading spinner when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

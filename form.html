@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology Fun - Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="zodiac.html">Zodiac Signs</a>
+                <a href="form.html" class="active">Start Analysis</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>🌟 Astrology Fun 🌟</h1>
+            <p>Find your zodiac sign and discover your destiny!</p>
+        </div>
+        
+        <!-- Form -->
+        <div class="form-container">
+            <form id="astroForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Birth Date:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male"> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="other"> Other</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="siblings">Siblings:</label>
+                    <input type="number" id="siblings" name="siblings" min="0" max="20" placeholder="Number of siblings">
+                </div>
+
+                <div class="form-group">
+                    <label for="color">Favorite Color:</label>
+                    <input type="text" id="color" name="color" placeholder="Your favorite color">
+                </div>
+
+                <div class="form-group">
+                    <label>Pet:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="pet" value="yes"> Yes</label>
+                        <label><input type="radio" name="pet" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="food">Favorite Food:</label>
+                    <select id="food" name="food">
+                        <option value="">Choose your favorite food</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="burger">Burger</option>
+                        <option value="pasta">Pasta</option>
+                        <option value="ice-cream">Ice Cream</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" min="100" max="250" placeholder="Your height in cm">
+                </div>
+
+                <div class="form-group">
+                    <label for="eyes">Eye Color:</label>
+                    <input type="text" id="eyes" name="eyes" placeholder="Your eye color">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Your Photo:</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">🌟 Find My Sign! 🌟</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Fun Astrology Analyzer. Stars guide us all!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
