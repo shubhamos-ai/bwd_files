@@ -1,110 +1,133 @@
-// Simple JavaScript for Astrology Analyzer
+// Simple JavaScript for Astrology Analyzer using only simple logic
 
-// Wait for the page to load completely
 document.addEventListener('DOMContentLoaded', function() {
-    
     // Handle form submission
     const form = document.getElementById('astroForm');
     if (form) {
-        form.addEventListener('submit', function(event) {
-            // Prevent the form from actually submitting
-            event.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const birthdate = document.getElementById('birthdate').value;
-            
-            // Simple validation
-            if (!name || !birthdate) {
-                alert('Please fill in your name and birth date!');
-                return;
-            }
-            
-            // Calculate zodiac sign based on birth date
-            const zodiacSign = getZodiacSign(birthdate);
-            
-            // Store the result in localStorage to show on result page
-            localStorage.setItem('zodiacResult', `You are ${zodiacSign}`);
-            localStorage.setItem('userName', name);
-            
-            // Redirect to result page
-            window.location.href = 'result.html';
-        });
+        form.addEventListener('submit', handleFormSubmit);
     }
     
-    // If we're on the result page, display the zodiac sign
-    const resultElement = document.getElementById('result');
-    if (resultElement) {
-        const zodiacResult = localStorage.getItem('zodiacResult');
-        const userName = localStorage.getItem('userName');
+    // Display result if on result page
+    displayZodiacResult();
+});
+
+// Function to handle clicking on a path card
+function selectPath(type) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const title = document.getElementById('chosenTitle');
+    const hiddenType = document.getElementById('selectedType');
+    
+    if (step1) {
+        step1.style.display = 'none';
+    }
+    
+    if (step2) {
+        step2.style.display = 'block';
+    }
+    
+    if (title) {
+        title.innerHTML = '✨ ' + type;
+    }
+    
+    if (hiddenType) {
+        hiddenType.value = type;
+    }
+}
+
+// Function to go back to choices
+function goBack() {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    
+    if (step1) {
+        step1.style.display = 'block';
+    }
+    
+    if (step2) {
+        step2.style.display = 'none';
+    }
+}
+
+// Handle form submission with simple alert/confirm
+function handleFormSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const birthdate = document.getElementById('birthdate').value;
+    const type = document.getElementById('selectedType').value;
+    
+    if (name == "") {
+        alert("Please enter your name!");
+    } else if (birthdate == "") {
+        alert("Please enter your birth date!");
+    } else {
+        // Simple confirmation
+        const userSure = confirm("Are you sure you wish to continue?");
         
-        if (zodiacResult) {
-            resultElement.textContent = zodiacResult;
+        if (userSure == true) {
+            // Save data
+            localStorage.setItem('userName', name);
+            localStorage.setItem('chosenType', type);
             
-            // Add welcome message
-            const pageTitle = document.querySelector('.page-header h1');
-            if (pageTitle && userName) {
-                pageTitle.textContent = `🌟 ${userName}'s Zodiac Sign 🌟`;
+            // Simple logic for calculation
+            const zodiac = getZodiacSign(birthdate);
+            localStorage.setItem('zodiacResult', zodiac);
+            
+            // Redirect
+            window.location.href = 'result.html';
+        } else {
+            alert("Cancelled!");
+        }
+    }
+}
+
+// Display zodiac result on result page
+function displayZodiacResult() {
+    const resultValue = document.getElementById('resultValue');
+    const userNameElement = document.getElementById('userName');
+    
+    if (resultValue) {
+        const zodiacSign = localStorage.getItem('zodiacResult');
+        const userName = localStorage.getItem('userName');
+        const type = localStorage.getItem('chosenType');
+        
+        if (userName) {
+            userNameElement.innerHTML = userName;
+        }
+        
+        if (zodiacSign) {
+            if (type == "Death Calculator") {
+                resultValue.innerHTML = "You will live for 100+ years! ⏳";
+            } else if (type == "Vedic Planets") {
+                resultValue.innerHTML = "Jupiter is in your favor! 🪐";
+            } else {
+                resultValue.innerHTML = zodiacSign;
             }
         }
     }
-    
-    // Handle contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            
-            // Reset form
-            contactForm.reset();
-        });
-    }
-});
+}
 
-// Function to calculate zodiac sign based on birth date
+// Simple Zodiac calculation
 function getZodiacSign(birthdate) {
     const date = new Date(birthdate);
-    const month = date.getMonth() + 1; // JavaScript months are 0-11
-    const day = date.getDate();
+    const month = date.getMonth() + 1; // 1-12
     
-    // Zodiac sign calculations
-    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-        return "Aries ♈";
-    } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-        return "Taurus ♉";
-    } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-        return "Gemini ♊";
-    } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-        return "Cancer ♋";
-    } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-        return "Leo ♌";
-    } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-        return "Virgo ♍";
-    } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
-        return "Libra ♎";
-    } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-        return "Scorpio ♏";
-    } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-        return "Sagittarius ♐";
-    } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-        return "Capricorn ♑";
-    } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-        return "Aquarius ♒";
-    } else {
-        return "Pisces ♓";
-    }
+    let sign = "";
+    
+    if (month == 1) { sign = "Capricorn ♑"; }
+    else if (month == 2) { sign = "Aquarius ♒"; }
+    else if (month == 3) { sign = "Pisces ♓"; }
+    else if (month == 4) { sign = "Aries ♈"; }
+    else if (month == 5) { sign = "Taurus ♉"; }
+    else if (month == 6) { sign = "Gemini ♊"; }
+    else if (month == 7) { sign = "Cancer ♋"; }
+    else if (month == 8) { sign = "Leo ♌"; }
+    else if (month == 9) { sign = "Virgo ♍"; }
+    else if (month == 10) { sign = "Libra ♎"; }
+    else if (month == 11) { sign = "Scorpio ♏"; }
+    else if (month == 12) { sign = "Sagittarius ♐"; }
+    else { sign = "Stellar Soul ✨"; }
+    
+    return sign;
 }

@@ -3,107 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrology Fun - Form</title>
+    <title>Cosmic Analysis | Enter Your Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" class="navbar-brand">✨ COSMIC ASTRO</a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="zodiac.html">Zodiac Signs</a>
-                <a href="form.html" class="active">Start Analysis</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" class="btn btn-secondary" style="color: white;">Back</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="page-header">
-            <h1>🌟 Astrology Fun 🌟</h1>
-            <p>Find your zodiac sign and discover your destiny!</p>
+    <div class="container" style="padding: 60px 2rem; max-width: 1000px; margin: 0 auto;">
+        <div id="step1">
+            <div class="page-header" style="text-align: center; margin-bottom: 3rem;">
+                <h1 class="main-title">Choose Your Path</h1>
+                <p class="subtitle">Select a celestial calculation to begin your journey.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="feature-card" onclick="selectPath('Zodiac Sign')">
+                        <div class="feature-icon">✨</div>
+                        <h3>Zodiac Sign</h3>
+                        <p>Discover your sun sign based on your birth month.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="feature-card" onclick="selectPath('Vedic Planets')">
+                        <div class="feature-icon">🪐</div>
+                        <h3>Planet Analysis</h3>
+                        <p>Explore your planetary influences and strengths.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="feature-card" onclick="selectPath('Death Calculator')">
+                        <div class="feature-icon">⏳</div>
+                        <h3>Death Calculator</h3>
+                        <p>Predict your life span with hidden patterns.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Form -->
-        <div class="form-container">
-            <form id="astroForm">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your name">
-                </div>
 
-                <div class="form-group">
-                    <label for="birthdate">Birth Date:</label>
-                    <input type="date" id="birthdate" name="birthdate" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Gender:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="gender" value="male"> Male</label>
-                        <label><input type="radio" name="gender" value="female"> Female</label>
-                        <label><input type="radio" name="gender" value="other"> Other</label>
+        <div id="step2" style="display: none; max-width: 500px; margin: 0 auto;">
+            <div class="form-container fade-in">
+                <h2 id="chosenTitle" style="text-align: center; margin-bottom: 1.5rem;">Calculation</h2>
+                <form id="astroForm">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="Enter name">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="siblings">Siblings:</label>
-                    <input type="number" id="siblings" name="siblings" min="0" max="20" placeholder="Number of siblings">
-                </div>
-
-                <div class="form-group">
-                    <label for="color">Favorite Color:</label>
-                    <input type="text" id="color" name="color" placeholder="Your favorite color">
-                </div>
-
-                <div class="form-group">
-                    <label>Pet:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="pet" value="yes"> Yes</label>
-                        <label><input type="radio" name="pet" value="no"> No</label>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label for="birthdate">Birth Date</label>
+                        <input type="date" id="birthdate" required>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="food">Favorite Food:</label>
-                    <select id="food" name="food">
-                        <option value="">Choose your favorite food</option>
-                        <option value="pizza">Pizza</option>
-                        <option value="burger">Burger</option>
-                        <option value="pasta">Pasta</option>
-                        <option value="ice-cream">Ice Cream</option>
-                    </select>
-                </div>
+                    <input type="hidden" id="selectedType">
 
-                <div class="form-group">
-                    <label for="height">Height (cm):</label>
-                    <input type="number" id="height" name="height" min="100" max="250" placeholder="Your height in cm">
-                </div>
-
-                <div class="form-group">
-                    <label for="eyes">Eye Color:</label>
-                    <input type="text" id="eyes" name="eyes" placeholder="Your eye color">
-                </div>
-
-                <div class="form-group">
-                    <label for="photo">Your Photo:</label>
-                    <input type="file" id="photo" name="photo" accept="image/*">
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-large">🌟 Find My Sign! 🌟</button>
-            </form>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem;">
+                        ✨ Start Analysis
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 1rem;">
+                        <a href="#" onclick="goBack()" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← Go back to choices</a>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Fun Astrology Analyzer. Stars guide us all!</p>
-        </div>
+        <p>&copy; 2024 Cosmic Astro. Crafted for the curious. | <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a></p>
     </footer>
 
     <script src="script.js"></script>

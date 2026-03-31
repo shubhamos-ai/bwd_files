@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Astrology Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="fadeInUp">🧠 Simple Astrology Engine</h1>
+            <p class="fadeInUp">Enter your birth details for instant cosmic insights</p>
+        </div>
+        
+        <!-- Simple Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-12">
+                <div class="form-container fade-in">
+                    <h2 class="text-center mb-4">🎯 Enter Your Birth Details</h2>
+                    
+                    <form id="simpleAstrologyForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="birthDate" class="form-label">Birth Date:</label>
+                                <input type="date" id="birthDate" class="form-control" required placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="birthTime" class="form-label">Birth Time:</label>
+                                <input type="time" id="birthTime" class="form-control" placeholder="HH:MM">
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mb-4">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                🌟 Generate My Chart
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-12">
+                <div class="result-container" id="resultsSection" style="display: none;">
+                    <div class="row">
+                        <!-- Sun Sign -->
+                        <div class="col-md-6 mb-3">
+                            <div class="result-box">
+                                <h3>☀️ Sun Sign</h3>
+                                <div class="result-value" id="sunSign">--</div>
+                                <small class="result-desc">Your core identity</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Moon Sign -->
+                        <div class="col-md-6 mb-3">
+                            <div class="result-box">
+                                <h3>🌙 Moon Sign</h3>
+                                <div class="result-value" id="moonSign">--</div>
+                                <small class="result-desc">Your emotions & inner self</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <!-- Rising Sign -->
+                        <div class="col-md-6 mb-3">
+                            <div class="result-box">
+                                <h3>🌅 Rising Sign</h3>
+                                <div class="result-value" id="risingSign">--</div>
+                                <small class="result-desc">How others see you</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Birth Chart Data -->
+                        <div class="col-md-6 mb-3">
+                            <div class="result-box">
+                                <h3>📊 Chart Data</h3>
+                                <div id="chartData" class="chart-info">
+                                    <div>Planets in Signs: <span id="planetsInSigns">--</span></div>
+                                    <div>Planets in Houses: <span id="planetsInHouses">--</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary" onclick="resetEngine()">
+                            🔄 Calculate Again
+                        </button>
+                        <a href="index.html" class="btn btn-primary ms-2">
+                            🏠 Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Made with love by Shubham. Simple but believable cosmic insights! 🧠</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Zodiac signs array
+        const zodiacSigns = [
+            'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 
+            'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+        ];
+
+        // Planet symbols
+        const planetSymbols = {
+            'sun': '☀️',
+            'moon': '🌙',
+            'mercury': '☿',
+            'venus': '♀',
+            'mars': '♂',
+            'jupiter': '♃',
+            'saturn': '♄'
+        };
+
+        document.getElementById('simpleAstrologyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            
+            // Get input values
+            const birthDate = document.getElementById('birthDate').value;
+            const birthTime = document.getElementById('birthTime').value;
+            
+            if (!birthDate) {
+                alert('Please enter your birth date!');
+                document.getElementById('loadingSpinner').style.display = 'none';
+                return;
+            }
+            
+            // Calculate all astrology data
+            setTimeout(() => {
+                const results = calculateSimpleAstrology(birthDate, birthTime);
+                displayResults(results);
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 1000);
+        });
+
+        function calculateSimpleAstrology(birthDate, birthTime) {
+            const date = new Date(birthDate);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            
+            // STEP 1: Calculate Sun Sign (REAL)
+            const sunSign = getSunSign(day, month);
+            
+            // STEP 2: Calculate Moon Sign (FAKE but believable)
+            const moonSign = getMoonSign(day, month, year);
+            
+            // STEP 3: Calculate Rising Sign (TIME-BASED)
+            const risingSign = getRisingSign(birthTime);
+            
+            // STEP 4: Calculate Planets in Signs (PATTERN)
+            const planetsInSigns = getPlanetsInSigns(sunSign);
+            
+            // STEP 5: Calculate Planets in Houses (LOGICAL)
+            const planetsInHouses = getPlanetsInHouses(risingSign);
+            
+            return {
+                sunSign,
+                moonSign,
+                risingSign,
+                planetsInSigns,
+                planetsInHouses
+            };
+        }
+
+        function getSunSign(day, month) {
+            // REAL zodiac calculation
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
+            if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Taurus";
+            if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Gemini";
+            if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer";
+            if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo";
+            if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo";
+            if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
+            if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio";
+            if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius";
+            if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricorn";
+            if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
+            return "Pisces";
+        }
+
+        function getMoonSign(day, month, year) {
+            // FAKE but believable calculation
+            const dayOfYear = Math.floor((new Date(year, month - 1, day).getTime() / (1000 * 60 * 60 * 24));
+            const moonIndex = dayOfYear % 12;
+            return zodiacSigns[moonIndex];
+        }
+
+        function getRisingSign(birthTime) {
+            if (!birthTime) return zodiacSigns[0]; // Default to Aries
+            
+            const [hours, minutes] = birthTime.split(':').map(Number);
+            const totalMinutes = hours * 60 + minutes;
+            const signIndex = Math.floor(totalMinutes / 120) % 12; // ~2 hours per sign
+            return zodiacSigns[signIndex];
+        }
+
+        function getPlanetsInSigns(sunSign) {
+            const sunIndex = zodiacSigns.indexOf(sunSign);
+            const planets = ['mercury', 'venus', 'mars', 'jupiter', 'saturn'];
+            const result = {};
+            
+            planets.forEach((planet, index) => {
+                const planetIndex = (sunIndex + index + 1) % 12;
+                result[planet] = zodiacSigns[planetIndex];
+            });
+            
+            return result;
+        }
+
+        function getPlanetsInHouses(risingSign) {
+            const risingIndex = zodiacSigns.indexOf(risingSign);
+            const houses = {};
+            
+            for (let i = 1; i <= 12; i++) {
+                const signIndex = (risingIndex + i - 1) % 12;
+                houses[i] = zodiacSigns[signIndex];
+            }
+            
+            return houses;
+        }
+
+        function displayResults(results) {
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('resultsSection').classList.add('fade-in');
+            
+            // Display Sun Sign
+            document.getElementById('sunSign').textContent = results.sunSign;
+            
+            // Display Moon Sign
+            document.getElementById('moonSign').textContent = results.moonSign;
+            
+            // Display Rising Sign
+            document.getElementById('risingSign').textContent = results.risingSign;
+            
+            // Display Planets in Signs
+            const planetsHtml = Object.entries(results.planetsInSigns)
+                .map(([planet, sign]) => `${planetSymbols[planet]} ${sign}`)
+                .join(' | ');
+            document.getElementById('planetsInSigns').textContent = planetsHtml;
+            
+            // Display Planets in Houses
+            const housesHtml = Object.entries(results.planetsInHouses)
+                .map(([house, sign]) => `House ${house}: ${sign}`)
+                .join(' | ');
+            document.getElementById('planetsInHouses').textContent = housesHtml;
+        }
+
+        function resetEngine() {
+            document.getElementById('simpleAstrologyForm').reset();
+            document.getElementById('resultsSection').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Hide loading spinner when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

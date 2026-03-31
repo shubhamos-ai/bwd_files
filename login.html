@@ -17,36 +17,57 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="zodiac.html">Zodiac Signs</a>
-                <a href="planets.html">Planets</a>
-                <a href="nakshatras.html">Nakshatras</a>
-                <a href="form.html">Start Analysis</a>
-                <a href="login.html" class="active">Login</a>
-                <a href="contact.html">Contact</a>
-            </div>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
         <div class="page-header">
-            <h1 class="fadeInUp">🔮 Welcome to Your Cosmic Portal</h1>
+            <h1 class="fadeInUp">🔮 Welcome Back, Cosmic Explorer!</h1>
             <p class="fadeInUp">Choose your path to celestial wisdom</p>
         </div>
         
         <!-- Login Container -->
         <div class="login-container fade-in">
-            <h2 class="login-title">🌟 Choose Your Journey</h2>
+            <h2 class="login-title">🌟 Enter Your Cosmic Portal</h2>
             
+            <!-- Welcome Message -->
+            <div class="welcome-message" id="welcomeMessage" style="display: none;">
+                <h3>🎉 Welcome back!</h3>
+                <p>Ready to explore the cosmos again?</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="remember" class="form-check-input">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large w-100">
+                    🚀 Login to Cosmos
+                </button>
+            </div>
+            
+            <!-- Options Grid -->
             <div class="options-grid">
                 <!-- Zodiac Sign Calculator -->
                 <div class="option-card pulse-hover" onclick="navigateToPage('form.html')">
-                    <div class="planet-icon">🔮</div>
+                    <div class="option-icon">🔮</div>
                     <h3>Calculate Zodiac Sign</h3>
-                    <p>Discover your zodiac sign based on your birth date</p>
+                    <p>Discover your zodiac sign based on birth date</p>
                     <div class="feature-list">
                         <small>✓ Accurate calculations</small><br>
                         <small>✓ Personality insights</small><br>
@@ -56,7 +77,7 @@
                 
                 <!-- Death Date Calculator -->
                 <div class="option-card pulse-hover" onclick="navigateToPage('death-calculator.html')">
-                    <div class="planet-icon">⏰</div>
+                    <div class="option-icon">⏰</div>
                     <h3>Calculate Death Date</h3>
                     <p>Explore life predictions and destiny calculations</p>
                     <div class="feature-list">
@@ -65,10 +86,34 @@
                         <small>✓ Ancient wisdom</small>
                     </div>
                 </div>
+                
+                <!-- Check Your Birth Chart -->
+                <div class="option-card pulse-hover" onclick="navigateToPage('form.html')">
+                    <div class="option-icon">📊</div>
+                    <h3>Birth Chart Analysis</h3>
+                    <p>Complete Vedic astrology birth chart reading</p>
+                    <div class="feature-list">
+                        <small>✓ Planetary positions</small><br>
+                        <small>✓ Nakshatra analysis</small><br>
+                        <small>✓ Dasha periods</small>
+                    </div>
+                </div>
+                
+                <!-- View All Nakshatras -->
+                <div class="option-card pulse-hover" onclick="navigateToPage('nakshatras.html')">
+                    <div class="option-icon">🌙</div>
+                    <h3>All 27 Nakshatras</h3>
+                    <p>Explore lunar constellations and their meanings</p>
+                    <div class="feature-list">
+                        <small>✓ Detailed descriptions</small><br>
+                        <small>✓ Personality traits</small><br>
+                        <small>✓ Compatibility analysis</small>
+                    </div>
+                </div>
             </div>
             
             <div class="text-center mt-4">
-                <p class="text-muted">Already have an account? <a href="#" onclick="showQuickLogin()">Quick Login</a></p>
+                <p class="text-muted">Don't have an account? <a href="#" onclick="showRegisterForm()" class="text-primary">Sign up</a></p>
             </div>
         </div>
     </div>
@@ -76,21 +121,67 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Fun Astrology Analyzer. Your cosmic journey begins here! 🌟</p>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="planets.html">Planets</a>
-                <a href="nakshatras.html">Nakshatras</a>
-                <a href="form.html">Start Analysis</a>
-                <a href="contact.html">Contact</a>
-            </div>
+            <p>&copy; 2024 Made with love by Shubham. Your cosmic journey continues! 🌟</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script>
+        // Check if user is returning (has session)
+        window.addEventListener('load', function() {
+            const returningUser = localStorage.getItem('returningUser');
+            if (returningUser) {
+                showWelcomeMessage();
+            }
+        });
+        
+        function showWelcomeMessage() {
+            document.getElementById('welcomeMessage').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            
+            // Hide welcome message after 3 seconds
+            setTimeout(() => {
+                document.getElementById('welcomeMessage').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'block';
+            }, 3000);
+        }
+        
+        function showRegisterForm() {
+            // Simple registration prompt
+            const email = prompt('Enter your email to register:');
+            if (email) {
+                alert(`Welcome to the cosmic journey! ${email}`);
+                // In real app, this would create account
+            }
+        }
+        
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields!');
+                return;
+            }
+            
+            // Simulate login success
+            if (email && password) {
+                // Store returning user session
+                localStorage.setItem('returningUser', email);
+                
+                alert(`Welcome back! ${email}`);
+                
+                // Reset form
+                document.getElementById('loginForm').reset();
+            }
+        });
+        
         function navigateToPage(page) {
             // Show loading spinner
             document.getElementById('loadingSpinner').style.display = 'flex';
@@ -98,16 +189,7 @@
             // Simulate loading delay
             setTimeout(() => {
                 window.location.href = page;
-            }, 1000);
-        }
-        
-        function showQuickLogin() {
-            // Simple quick login simulation
-            const email = prompt('Enter your email for quick login:');
-            if (email) {
-                alert(`Welcome back! ${email}`);
-                // In real app, this would authenticate the user
-            }
+            }, 800);
         }
         
         // Hide loading spinner when page loads

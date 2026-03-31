@@ -3,56 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Zodiac Sign - Result</title>
+    <title>Cosmic Reveal | Your Destiny Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="navbar-brand">✨ Astrology Analyzer</a>
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" class="navbar-brand">✨ COSMIC ASTRO</a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="zodiac.html">Zodiac Signs</a>
-                <a href="form.html">Start Analysis</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Go Home</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
+    <div class="container" style="padding: 80px 2rem; max-width: 800px; margin: 0 auto; text-align: center;">
         <div class="page-header">
-            <h1>🌟 Your Zodiac Sign 🌟</h1>
-            <p>Here's what the stars have to say about you!</p>
+            <h1 class="main-title"><span id="userName">Friend</span>'s Celestial Sign</h1>
+            <p class="subtitle">The stars have spoken, and your cosmic alignment is revealed.</p>
         </div>
         
-        <!-- Result Display -->
-        <div class="result-container">
+        <div class="result-container fade-in">
             <div class="result-box">
-                <h2 id="result">You are Aries ♈</h2>
+                <p style="text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.8rem; margin-bottom: 0.5rem; opacity: 0.8;">Your Cosmic Sign is</p>
+                <div id="resultValue" class="result-value">Pisces ♓</div>
             </div>
             
-            <div class="fun-facts">
-                <h3>✨ Fun Facts About Your Sign</h3>
-                <p>Your zodiac sign reveals amazing personality traits and destiny insights!</p>
+            <div class="feature-card" style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem;">✨ Stellar Insights</h3>
+                <p style="color: var(--text-muted);">As a <span id="resultLabel">Stellar Soul</span>, your path is paved with cosmic light. Embrace the unique energies that flow through your celestial alignment today.</p>
             </div>
             
-            <div class="action-buttons">
-                <a href="form.html" class="btn btn-primary">🔄 Check Again</a>
-                <a href="index.html" class="btn btn-secondary">🏠 Go Home</a>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="form.html" class="btn btn-primary">🔄 Calculate Again</a>
+                <a href="index.html" class="btn btn-secondary" style="border: 1px solid var(--card-border); color: white;">🏠 Back to Home</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Fun Astrology Analyzer. The stars never lie! ✨</p>
-        </div>
+        <p>&copy; 2024 Cosmic Astro. Guided by the stars. | <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a></p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Set result label dynamically
+        document.addEventListener('DOMContentLoaded', () => {
+            const res = localStorage.getItem('zodiacResult');
+            if (res) {
+                const label = document.getElementById('resultLabel');
+                if (label) label.textContent = res.split(' ')[0];
+            }
+        });
+    </script>
 </body>
 </html>
