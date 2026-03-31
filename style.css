@@ -18,13 +18,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--background);
-    background-image: url('bg.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
+    background: var(--background) url('/bg.png?v=2') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 .navbar {
