@@ -1,6 +1,7 @@
 # ✨ Cosmic Astrology Analyzer
 
 Welcome to the **Cosmic Astrology Analyzer**, a premium, glassmorphic web application designed to help you discover the hidden secrets of your birth date. This project blends ancient astrological wisdom with modern mathematical patterns, all within a stunning, responsive user interface.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/c695bab3-395d-40bf-80f5-73a3338460a6" />
 
 ## 🌟 Features
 
